@@ -1,0 +1,41 @@
+//----------------------------------------------------------------------------
+#ifndef TabPgDlgH
+#define TabPgDlgH
+//----------------------------------------------------------------------------
+#include <Vcl.ExtCtrls.hpp>
+#include <Vcl.ComCtrls.hpp>
+#include <Vcl.Buttons.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.Forms.hpp>
+#include <Vcl.Graphics.hpp>
+#include <System.Classes.hpp>
+#include <System.SysUtils.hpp>
+#include <Winapi.Windows.hpp>
+#include <System.hpp>
+#include <Vcl.Imaging.jpeg.hpp>
+//----------------------------------------------------------------------------
+class TPagesDlg : public TForm
+{
+__published:
+	TPanel *Panel1;
+	TPanel *Panel2;
+	TPageControl *PageControl;
+	TTabSheet *TabSheet1;
+	TTabSheet *TabSheet2;
+	TTabSheet *TabSheet3;
+	TButton *OKBtn;
+	TImage *Image1;
+	TLabel *Label1;
+	TLabel *Label2;
+	TLabel *Label3;
+
+	void __fastcall OKBtnClick(TObject *Sender);
+private:
+public:
+	virtual __fastcall TPagesDlg(TComponent* AOwner);
+};
+//----------------------------------------------------------------------------
+extern PACKAGE TPagesDlg *PagesDlg;
+//----------------------------------------------------------------------------
+#endif    

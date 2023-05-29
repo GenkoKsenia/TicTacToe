@@ -1,0 +1,124 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit4.h"
+#include <string>
+#include <fstream>
+#include <iostream>
+#include "Unit2.h"
+#include "Unit1.h"
+
+
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm4 *Form4;
+
+struct account {
+	std::wstring name;
+	std::wstring password;
+};
+//const char* filename = "accounts.bin";
+//---------------------------------------------------------------------------
+__fastcall TForm4::TForm4(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm4::Button2Click(TObject *Sender)
+{
+
+	 account person;
+
+	 person.name = Edit1->Text.c_str(); // преобразование из UnicodeString в string
+	 person.password = Edit2->Text.c_str();
+
+	//запись информации аккаунта в файл
+	// Открытие файла для записи
+
+	std::fstream file("account.bin", std::ios::out | std::ios::app | std::ios::binary);
+
+    // Проверяем, что файл был открыт успешно
+	if (!file) {
+		ShowMessage("Ошибка открытия файла"); }
+
+	// Запись структуры в файл
+	wchar_t* name = &person.name[0];
+    wchar_t* password = &person.password[0];
+    int nameSize = person.name.size() * sizeof(wchar_t);
+	int passwordSize = person.password.size() * sizeof(wchar_t);
+
+	file.write((char*)&nameSize, sizeof(int)); // записываем размер name в файл
+    file.write((char*)name, nameSize); // записываем name в файл
+    file.write((char*)&passwordSize, sizeof(int)); // записываем размер password в файл
+	file.write((char*)password, passwordSize); // записываем password в файл
+
+
+	// Закрытие файла
+	file.close();
+
+	Edit1->Clear();
+	Edit2->Clear();
+	Close();
+
+}
+
+//---------------------------------------------------------------------------
+
+
+
+//---------------------------------------------------------------------------
+void __fastcall TForm4::Edit1KeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
+{
+	 if(Key == VK_RETURN) Edit2->SetFocus();
+	 char f;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm4::Button3Click(TObject *Sender)
+{
+	  Edit1->Clear();
+	  Edit2->Clear();
+	  Close();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm4::Button1Click(TObject *Sender)
+{
+// Открыть бинарный файл для чтения
+	std::wifstream file("account.bin", std::ios::binary);
+
+	// Проверяем, что файл был открыт успешно
+	if (!file) {
+		ShowMessage("Ошибка открытия файла"); }
+
+	account person;
+
+
+	// Читаем информацию из файла
+	while (file.read((wchar_t*)&person.name[0], person.name.size())) {
+		// Читаем password из файла
+		file.read((wchar_t*)&person.password[0], person.password.size());
+
+        // Сравниваем поля name и password с данными из Edit1 и Edit2
+        if (person.name == Edit1->Text.c_str() && person.password == Edit2->Text.c_str()) {
+			// Нашли совпадение, выполняем необходимые действия
+            ShowMessage("Аккаунт найден");
+            break;
+        }
+    }
+
+    // Закрываем файл
+    file.close();
+
+    // Если не нашли ни одного совпадения, выводим сообщение об ошибке
+	if (!file) {
+        ShowMessage("Аккаунт не найден");
+	}
+}
+
+//---------------------------------------------------------------------------
+

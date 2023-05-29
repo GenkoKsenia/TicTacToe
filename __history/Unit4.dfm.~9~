@@ -1,0 +1,97 @@
+object Form4: TForm4
+  Left = 0
+  Top = 0
+  Caption = #1042#1093#1086#1076' '#1074' '#1072#1082#1082#1072#1091#1085#1090
+  ClientHeight = 250
+  ClientWidth = 320
+  Color = clSilver
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  Position = poScreenCenter
+  TextHeight = 15
+  object Label1: TLabel
+    Left = 64
+    Top = 24
+    Width = 193
+    Height = 31
+    Caption = #1048#1084#1103' '#1087#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1103
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -23
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 120
+    Top = 106
+    Width = 79
+    Height = 31
+    Caption = #1055#1072#1088#1086#1083#1100
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -23
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Edit1: TEdit
+    Left = 16
+    Top = 61
+    Width = 284
+    Height = 39
+    Color = cl3DLight
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -23
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+    OnKeyDown = Edit1KeyDown
+  end
+  object Edit2: TEdit
+    Left = 16
+    Top = 140
+    Width = 284
+    Height = 39
+    Color = cl3DLight
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -23
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+  end
+  object Button1: TButton
+    Left = 16
+    Top = 217
+    Width = 65
+    Height = 25
+    Caption = #1042#1086#1081#1090#1080
+    TabOrder = 2
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 104
+    Top = 218
+    Width = 105
+    Height = 25
+    Caption = #1057#1086#1079#1076#1072#1090#1100' '#1072#1082#1082#1072#1091#1085#1090
+    TabOrder = 3
+    OnClick = Button2Click
+  end
+  object Button3: TButton
+    Left = 232
+    Top = 218
+    Width = 68
+    Height = 25
+    Caption = #1053#1072#1079#1072#1076
+    TabOrder = 4
+    OnClick = Button3Click
+  end
+end

@@ -1,0 +1,197 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit4.h"
+#include <string>
+#include <fstream>
+#include <iostream>
+#include "Unit2.h"
+#include "Unit1.h"
+
+
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm4 *Form4;
+/*
+struct account {
+	std::wstring name;
+	std::wstring password;
+};
+//---------------------------------------------------------------------------
+__fastcall TForm4::TForm4(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm4::Button2Click(TObject *Sender) { account person;
+
+person.name = Edit1->Text.c_str();
+person.password = Edit2->Text.c_str();
+
+std::fstream file("account.bin", std::ios::out | std::ios::app | std::ios::binary);
+
+if (!file) {
+    ShowMessage("Ошибка открытия файла");
+}
+
+char* name = new char[person.name.size() + 1];
+char* password = new char[person.password.size() + 1];
+wcstombs(name, person.name.c_str(), person.name.size() + 1);
+wcstombs(password, person.password.c_str(), person.password.size() + 1);
+
+int nameSize = person.name.size() + 1;
+int passwordSize = person.password.size() + 1;
+
+file.write((char*)&nameSize, sizeof(int));
+file.write(name, nameSize);
+file.write((char*)&passwordSize, sizeof(int));
+file.write(password, passwordSize);
+
+delete[] name;
+delete[] password;
+
+file.close();
+
+Edit1->Clear();
+Edit2->Clear();
+Close();
+}
+
+//---------------------------------------------------------------------------
+
+
+
+
+
+void __fastcall TForm4::Button1Click(TObject *Sender) { std::ifstream file("account.bin", std::ios::binary);
+
+if (!file) {
+	ShowMessage("Ошибка открытия файла");
+}
+
+account person;
+
+while (file) {
+	int nameSize, passwordSize;
+    file.read((char*)&nameSize, sizeof(int));
+    file.read((char*)&passwordSize, sizeof(int));
+
+    char* bufName = new char[nameSize];
+    char* bufPassword = new char[passwordSize];
+
+    file.read(bufName, nameSize);
+    file.read(bufPassword, passwordSize);
+
+    std::wstring name = std::wstring_convert<std::codecvt_utf8<wchar_t>>().from_bytes(bufName);
+    std::wstring password = std::wstring_convert<std::codecvt_utf8<wchar_t>>().from_bytes(bufPassword);
+
+    if (name == Edit1->Text.c_str() && password == Edit2->Text.c_str()) {
+        ShowMessage("Аккаунт найден");
+        break;
+    }
+
+    delete[] bufName;
+    delete[] bufPassword;
+}
+
+file.close();
+
+if (!file) {
+    ShowMessage("Аккаунт не найден");
+}
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TForm4::Edit1KeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
+{
+	 if(Key == VK_RETURN) Edit2->SetFocus();
+	 char f;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm4::Button3Click(TObject *Sender)
+{
+	  Edit1->Clear();
+	  Edit2->Clear();
+	  Close();
+}
+//---------------------------------------------------------------------------
+*/
+
+void __fastcall TForm4::Button2Click(TObject *Sender)
+{
+    // Получаем данные из edit'ов
+	int id = StrToInt(Edit1->Text);
+    AnsiString name = Edit2->Text;
+
+    // Создаем бинарный файл для записи
+    TFileStream* fs = new TFileStream("data.dat", fmCreate);
+
+    // Записываем данные в бинарный файл
+    fs->Write(&id, sizeof(id));
+    int len = name.Length();
+    fs->Write(&len, sizeof(len));
+    fs->Write(name.c_str(), len);
+
+    // Закрываем файл и очищаем память
+    delete fs;
+}
+
+void __fastcall TForm4::Button1Click(TObject *Sender)
+{
+    // Получаем данные из edit'ов
+    int id = StrToInt(Edit1->Text);
+    AnsiString name = Edit2->Text;
+
+    // Открываем бинарный файл для чтения
+    TFileStream* fs = new TFileStream("data.dat", fmOpenRead);
+
+    // Проверяем наличие данных в файле
+    bool found = false;
+    int pos = 0;
+    int file_size = fs->Size;
+    while (pos < file_size)
+    {
+        int file_id, len;
+        char* buffer;
+
+        // Читаем данные из бинарного файла
+        fs->Read(&file_id, sizeof(file_id));
+        pos += sizeof(file_id);
+
+        fs->Read(&len, sizeof(len));
+        pos += sizeof(len);
+
+        buffer = new char[len];
+        fs->Read(buffer, len);
+        pos += len;
+
+        AnsiString file_name(buffer, len);
+
+        // Сравниваем данные с тем, что было введено пользователем
+        if ((file_id == id) && (file_name == name))
+        {
+            found = true;
+            break;
+        }
+
+        delete[] buffer;
+    }
+
+    // Закрываем файл и очищаем память
+    delete fs;
+
+    // Выводим соответствующее сообщение
+    if (found)
+    {
+        Form2->Show();
+    }
+    else
+    {
+        ShowMessage("Аккаунт не найден");
+	}
+}

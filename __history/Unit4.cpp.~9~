@@ -1,0 +1,71 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit4.h"
+#include <fstream>
+#include <cstring>
+#include "Unit2.h"
+#include "Unit1.h"
+#include <Windows.h>
+
+
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm4 *Form4;
+/*
+struct account {
+	std::wstring name;
+	std::wstring password;
+};  */
+//---------------------------------------------------------------------------
+__fastcall TForm4::TForm4(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm4::Edit1KeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
+{
+	 if(Key == VK_RETURN) Edit2->SetFocus();
+	 char f;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm4::Button3Click(TObject *Sender)
+{
+	  Edit1->Clear();
+	  Edit2->Clear();
+	  Close();
+}
+//---------------------------------------------------------------------------
+
+
+// Определяем структуру для записи в бинарный файл
+struct Info {
+	char name[20];
+	char age;
+};
+
+void writeDataToFile(const char* filename, const Info& info) {
+    std::ofstream out(filename, std::ofstream::binary | std::ofstream::app);
+    if (out.is_open()) {
+        // Записываем данные в бинарный файл
+        out.write(reinterpret_cast<const char*>(&info), sizeof(Info));
+        out.close();
+    }
+}
+
+// Обработчик события нажатия кнопки
+void __fastcall TForm4::Button2Click(TObject *Sender)
+{
+    Info info;
+    std::memset(info.name, 0, sizeof(info.name));
+	std::strcpy(info.name, AnsiString(Edit1->Text).c_str()); // Преобразуем строки в тип char
+    info.age = StrToInt(Edit2->Text);
+
+    // Записываем данные в бинарный файл
+    writeDataToFile("data.bin", info);
+}

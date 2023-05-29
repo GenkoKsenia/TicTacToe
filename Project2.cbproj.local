@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.803,=C:\Users\konus\Documents\Embarcadero\Studio\Projects\Курсовая\ABOUT.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.327,C:\Users\konus\Documents\Embarcadero\Studio\Projects\Курсовая\Project2.cbproj=C:\Users\konus\Documents\Embarcadero\Studio\Projects\Project2.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.116,=C:\Users\konus\Documents\Embarcadero\Studio\Projects\Project2PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.163,=C:\Users\konus\Documents\Embarcadero\Studio\Projects\Unit2.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.009,=C:\Users\konus\Documents\Embarcadero\Studio\Projects\Курсовая\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.511,=c:\program files (x86)\embarcadero\studio\22.0\ObjRepos\EN\Cpp\okcancl2.CPP</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.308,C:\Users\konus\Documents\Embarcadero\Studio\Projects\Курсовая\Project2PCH1.h=C:\Users\konus\Documents\Embarcadero\Studio\Projects\Project2PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.631,=C:\Users\konus\Documents\Embarcadero\Studio\Projects\Курсовая\OKCNHLP2.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.317,=C:\Users\konus\Documents\Embarcadero\Studio\Projects\Курсовая\Unit3.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.655,=C:\Users\konus\Documents\Embarcadero\Studio\Projects\Курсовая\Unit6.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.363,C:\Users\konus\Documents\Embarcadero\Studio\Projects\Курсовая\Unit2.cpp=C:\Users\konus\Documents\Embarcadero\Studio\Projects\Unit2.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.808,=C:\Users\konus\Documents\Embarcadero\Studio\Projects\Курсовая\TABPGDLG.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.910,=C:\Users\konus\Documents\Embarcadero\Studio\Projects\Курсовая\Unit5.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.363,C:\Users\konus\Documents\Embarcadero\Studio\Projects\Курсовая\Unit2.h=C:\Users\konus\Documents\Embarcadero\Studio\Projects\Unit2.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.363,C:\Users\konus\Documents\Embarcadero\Studio\Projects\Курсовая\Unit2.dfm=C:\Users\konus\Documents\Embarcadero\Studio\Projects\Unit2.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.514,=C:\Users\konus\Documents\Embarcadero\Studio\Projects\Курсовая\Unit4.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.158,=C:\Users\konus\Documents\Embarcadero\Studio\Projects\Курсовая\Unit6.cpp</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="c:"/>
+    <File Path="c:\program files (x86)"/>
+    <File Path="c:\program files (x86)\embarcadero"/>
+    <File Path="c:\program files (x86)\embarcadero\studio"/>
+    <File Path="c:\program files (x86)\embarcadero\studio\22.0"/>
+    <File Path="c:\program files (x86)\embarcadero\studio\22.0\ObjRepos"/>
+    <File Path="c:\program files (x86)\embarcadero\studio\22.0\ObjRepos\EN"/>
+    <File Path="c:\program files (x86)\embarcadero\studio\22.0\ObjRepos\EN\Cpp"/>
+    <File Path="c:\program files (x86)\embarcadero\studio\22.0\ObjRepos\EN\Cpp\okcancl2.CPP"/>
+    <File Path="c:\program files (x86)\embarcadero\studio\22.0\ObjRepos\EN\Cpp\okcancl2.CPP"/>
+    <File Path="c:\program files (x86)\embarcadero\studio\22.0\ObjRepos\EN\Cpp\okcancl2.dfm"/>
+    <File Path="c:\program files (x86)\embarcadero\studio\22.0\ObjRepos\EN\Cpp\okcancl2.h"/>
+    <File Path="Project2.cpp"/>
+    <File Path="Project2PCH1.h"/>
+    <File Path="Unit1.cpp"/>
+    <File Path="Unit1.cpp"/>
+    <File Path="Unit1.dfm"/>
+    <File Path="Unit1.h"/>
+    <File Path="Unit2.cpp"/>
+    <File Path="Unit2.cpp"/>
+    <File Path="Unit2.dfm"/>
+    <File Path="Unit2.h"/>
+    <File Path="Unit3.cpp"/>
+    <File Path="Unit3.cpp"/>
+    <File Path="Unit3.dfm"/>
+    <File Path="Unit3.h"/>
+    <File Path="Unit4.cpp"/>
+    <File Path="Unit4.cpp"/>
+    <File Path="Unit4.dfm"/>
+    <File Path="Unit4.h"/>
+    <File Path="ABOUT.cpp"/>
+    <File Path="ABOUT.cpp"/>
+    <File Path="ABOUT.dfm"/>
+    <File Path="ABOUT.h"/>
+    <File Path="Unit5.cpp"/>
+    <File Path="Unit5.cpp"/>
+    <File Path="Unit5.dfm"/>
+    <File Path="Unit5.h"/>
+    <File Path="TABPGDLG.cpp"/>
+    <File Path="TABPGDLG.cpp"/>
+    <File Path="TABPGDLG.dfm"/>
+    <File Path="TABPGDLG.h"/>
+    <File Path="Unit6.cpp"/>
+    <File Path="Unit6.cpp"/>
+    <File Path="Unit6.dfm"/>
+    <File Path="Unit6.h"/>
+  </ProjectSortOrder>
+</BorlandProject>

@@ -1,0 +1,140 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit4.h"
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <stdio.h>
+#include <string.h>
+#include <vcl.h>
+#pragma hdrstop
+#pragma argsused
+#include <cstring>
+#include "Unit2.h"
+#include "Unit1.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm4 *Form4;
+
+struct Person {
+	char name[20];
+	char password[20];
+};
+const char* filename = "accounts.bin";
+//---------------------------------------------------------------------------
+__fastcall TForm4::TForm4(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm4::Button2Click(TObject *Sender)
+{
+	 Person p;
+
+	 //считывание информации из формы регистрации
+	 AnsiString text1 = Edit1->Text;
+	const char* c_str = text1.c_str();
+	int len = strlen(c_str);
+	char* data1 = new char[len + 1];
+	memcpy(data1, c_str, len);
+	strcpy(p.name, data1);
+
+	AnsiString text2 = Edit2->Text;
+	c_str = text2.c_str();
+	len = strlen(c_str);
+	char* data2 = new char[len + 1];
+	memcpy(data2, c_str, len);
+	strcpy(p.password, data2);
+
+
+	//запись информации аккаунта в файл
+	// Открытие файла для записи
+
+	FILE *fp = fopen("person.bin", "ab");
+
+    // Запись структуры в файл
+    fwrite(&p, sizeof(p), 1, fp);
+
+    // Закрытие файла
+	fclose(fp);
+
+    Edit1->Clear();
+	Edit2->Clear();
+	Close();
+
+}
+
+//---------------------------------------------------------------------------
+
+void __fastcall TForm4::Button1Click(TObject *Sender)
+{
+
+	 AnsiString text1 = Edit1->Text;
+	const char* c_str = text1.c_str();
+	int len = strlen(c_str);
+	char* data1 = new char[len + 1];
+	memcpy(data1, c_str, len);
+
+AnsiString text2 = Edit2->Text;
+c_str = text2.c_str();
+len = strlen(c_str);
+char* data2 = new char[len + 1];
+memcpy(data2, c_str, len);
+
+bool vxod = false; // устанавливаем флаг в false при начале функции
+
+// Открываем бинарный файл
+ifstream ifs("person.bin", ios::binary | ios::in);
+if (!ifs.is_open()) {
+    Application->Title="Ошибка";
+    ShowMessage("Файл не найден!");
+}
+
+// Ищем структуры, содержащие значение по полям name и password, равное введенным значениям
+Person my_struct;
+Person akk;
+while (ifs.read(reinterpret_cast<char*>(&my_struct), sizeof(Person))) {
+	if ((strcmp(my_struct.name, data1) == 0)&&(strcmp(my_struct.password, data2) == 0)) {
+
+		vxod = true; // устанавливаем флаг в true, если пользователь найден
+		Edit1->Clear();
+        Edit2->Clear();
+		Form2->Show();
+		Close();
+		break; // выходим из цикла, если найдено совпадение
+	}
+}
+
+ifs.close();
+
+if (!vxod) { // если пользователь не найден
+	Application->Title="Ошибка";
+	ShowMessage("Неверный логин или пароль");
+	Edit1->Clear();
+	Edit2->Clear();
+}
+
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TForm4::Edit1KeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
+
+{
+	 if(Key == VK_RETURN) Edit2->SetFocus();
+
+   char f;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm4::Button3Click(TObject *Sender)
+{
+	  Edit1->Clear();
+	  Edit2->Clear();
+	  Close();
+}
+//---------------------------------------------------------------------------
+
